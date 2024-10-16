@@ -1,0 +1,62 @@
+/*
+Faça um programa que receba dez idades, pesos e alturas, calcule e mostre:
+• a média das idades das dez pessoas;
+• o total que possui superior a 90 kg e altura inferior a 1,50 metro;
+• a porcentagem de pessoas com idade entre 10 e 30 anos entre aquelas que medem mais de
+1,90 m;
+*/
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int totalPessoas = 10;
+        int idade, pessoasPesoAltura = 0, pessoasAlturaIdade = 0, contador10_30 = 0;
+        double peso, altura, somaIdades = 0;
+
+        for (int i = 1; i <= totalPessoas; i++) {
+            System.out.println("Pessoa " + i);
+
+            //Idade
+            System.out.print("Digite a idade: ");
+            idade = scanner.nextInt();
+
+            //Peso
+            System.out.print("Digite o peso (em kg): ");
+            peso = scanner.nextDouble();
+
+            //Altura
+            System.out.print("Digite a altura (em metros): ");
+            altura = scanner.nextDouble();
+
+            // Soma idade
+            somaIdades += idade;
+
+            // Pessoas mais de 90kg e menos de 1,50m de altura
+            if (peso > 90 && altura < 1.50) {
+                pessoasPesoAltura++;
+            }
+
+            // Pessoas idade 10 a 30 anos / altura maior 1,90m
+            if (altura > 1.90) {
+                if (idade >= 10 && idade <= 30) {
+                    contador10_30++;
+                }
+                pessoasAlturaIdade++;
+            }
+        }
+        // Média das idades
+        double mediaIdades = somaIdades / totalPessoas;
+        //Idade e altura
+        double porcentagemIdadeAltura = (pessoasAlturaIdade > 0) ? ((contador10_30 * 100.0) / pessoasAlturaIdade) : 0;
+
+        System.out.println("\nResultados:");
+        System.out.printf("Média das idades: %.2f anos\n", mediaIdades);
+        System.out.println("Total de pessoas com mais de 90kg e menos de 1,50m: " + pessoasPesoAltura);
+        System.out.printf("Porcentagem de pessoas com idade entre 10 e 30 anos e mais de 1,90m: %.2f%%\n", porcentagemIdadeAltura);
+
+        scanner.close();
+    }
+}
