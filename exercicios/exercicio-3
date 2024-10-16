@@ -15,6 +15,8 @@ public class Main {
         int totalPessoas = 10;
         int idade, pessoasPesoAltura = 0, pessoasAlturaIdade = 0, contador10_30 = 0;
         double peso, altura, somaIdades = 0;
+        // Variáveis para armazenar dados das pessoas
+        String dadosColetados = "";
 
         for (int i = 1; i <= totalPessoas; i++) {
             System.out.println("Pessoa " + i);
@@ -52,11 +54,36 @@ public class Main {
         //Idade e altura
         double porcentagemIdadeAltura = (pessoasAlturaIdade > 0) ? ((contador10_30 * 100.0) / pessoasAlturaIdade) : 0;
 
-        System.out.println("\nResultados:");
-        System.out.printf("Média das idades: %.2f anos\n", mediaIdades);
-        System.out.println("Total de pessoas com mais de 90kg e menos de 1,50m: " + pessoasPesoAltura);
-        System.out.printf("Porcentagem de pessoas com idade entre 10 e 30 anos e mais de 1,90m: %.2f%%\n", porcentagemIdadeAltura);
+        // Opção para visualizar todos os dados coletados
+                System.out.print("\nDeseja ver todos os dados coletados? (Digite 1 para sim, 0 para não): ");
+                int opcao = scanner.nextInt();
 
-        scanner.close();
-    }
-}
+                if (opcao == 1) {
+                    System.out.println("\nDados coletados:");
+                    System.out.print(dadosColetados);
+
+                    System.out.println("\nResultados:");
+                    System.out.printf("Média das idades: %.2f anos\n", mediaIdades);
+                    System.out.println("Total de pessoas com mais de 90kg e menos de 1,50m: " + pessoasPesoAltura);
+                    System.out.printf("Porcentagem de pessoas com idade entre 10 e 30 anos e mais de 1,90m: %.2f%%\n", porcentagemIdadeAltura);
+                    
+                }
+
+                scanner.close();
+            }
+        }
+
+/*// Exibe opção para visualizar os dados coletados
+            System.out.print("\nDeseja ver todos os dados coletados? (Digite 1 para sim, 0 para não): ");
+            int opcao = scanner.nextInt();
+
+            if (opcao == 1) {
+                System.out.println("\nDados coletados:");
+                for (int i = 0; i < totalPessoas; i++) {
+                    System.out.println("Pessoa " + (i + 1) + ": Idade = " + idade + ", Peso = " + peso + " kg, Altura = " + altura + " metros");
+                }
+            }
+
+            scanner.close();
+        }
+}*/
