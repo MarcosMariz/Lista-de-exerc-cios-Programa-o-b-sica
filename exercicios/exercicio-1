@@ -1,0 +1,58 @@
+/*
+Foi feita uma pesquisa sobre a audiência de canal de TV em várias casas de uma cidade, em
+determinado dia. Para cada casa consultada foi fornecido o número do canal (4, 5, 7, 12) e o
+número de pessoas que estavam assistindo aquele canal. Se a televisão estivesse desligada, nada
+era anotado, ou seja, essa casa não entrava na pesquisa. Faça um programa que:
+• leia um número indeterminado de dados (número do canal e número de pessoas que estavam assistindo); e
+• calcule e mostre a porcentagem de audiência de cada canal.
+Para encerrar a entrada de dados, digite o número do canal ZERO.*/
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int canal4 = 0, canal5 = 0, canal7 = 0, canal12 = 0;
+        int totalPessoas = 0;
+
+        while (true) {
+            System.out.print("Digite o número do canal (4, 5, 7, 12) ou 0 para encerrar: ");
+            int canal = scanner.nextInt();
+
+            if (canal == 0) {
+                break;
+            }
+
+            // Verifica se o canal é válido
+            if (canal == 4 || canal == 5 || canal == 7 || canal == 12) {
+                System.out.print("Digite o número de pessoas assistindo ao canal: ");
+                int pessoas = scanner.nextInt();
+
+                // Adiciona o número de pessoas ao canal correspondente
+                switch (canal) {
+                    case 4: canal4 += pessoas; break;
+                    case 5: canal5 += pessoas; break;
+                    case 7: canal7 += pessoas; break;
+                    case 12: canal12 += pessoas; break;
+                }
+                totalPessoas += pessoas;
+            } else {
+                System.out.println("Número do canal inválido! Tente novamente.");
+            }
+        }
+
+        // Porcentagem de audiência de cada canal
+        if (totalPessoas > 0) {
+            System.out.println("Porcentagem de audiência:");
+            System.out.printf("Canal 4: %.2f%%\n", (canal4 * 100.0 / totalPessoas));
+            System.out.printf("Canal 5: %.2f%%\n", (canal5 * 100.0 / totalPessoas));
+            System.out.printf("Canal 7: %.2f%%\n", (canal7 * 100.0 / totalPessoas));
+            System.out.printf("Canal 12: %.2f%%\n", (canal12 * 100.0 / totalPessoas));
+        } else {
+            System.out.println("Nenhuma audiência registrada.");
+        }
+
+        scanner.close();
+    }
+}
