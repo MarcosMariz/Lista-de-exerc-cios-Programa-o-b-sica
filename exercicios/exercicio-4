@@ -1,0 +1,23 @@
+/*
+Fazer um algoritmo, utilizando o comando for, que calcule e escreva a soma dos 50 primeiros
+termos da seguinte série: S = 1000/1 − 997/2 + 994/3 − 991/4 + . . .
+*/
+
+public class Main {
+    public static void main(String[] args) {
+        double soma = 0;
+
+        // Loop para calcular a soma dos 50 primeiros termos
+        for (int n = 1; n <= 50; n++) {
+            double termo = (1000 - 3 * (n - 1)) / n; // Cálculo do termo
+            if (n % 2 == 0) { // Para termos pares, subtrai
+                soma -= termo;
+            } else { // Para termos ímpares, soma
+                soma += termo;
+            }
+        }
+
+        // Exibir o resultado
+        System.out.printf("A soma dos 50 primeiros termos da série é: %.2f\n", soma);
+    }
+}
