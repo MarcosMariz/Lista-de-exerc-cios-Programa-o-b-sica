@@ -1,0 +1,122 @@
+/*Criar a estrutura de dados para armazenar os dados dos pacientes cadastrados no sistema. (Array List)*/
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    private ArrayList<Medico> medicos; // Lista para armazenar médicos
+    private ArrayList<Paciente> pacientes; // Lista para armazenar pacientes
+
+    // Construtor para inicializar as listas de médicos e pacientes
+    public Main() {
+        medicos = new ArrayList<>();
+        pacientes = new ArrayList<>();
+    }
+
+    // Método para adicionar médico
+    public void adicionarMedico(String nome, String especialidade, String crm, String telefone) {
+        Medico medico = new Medico(nome, especialidade, crm, telefone);
+        medicos.add(medico);
+        System.out.println("Médico cadastrado com sucesso!");
+    }
+
+    // Método para adicionar paciente
+    public void adicionarPaciente(String nome, int idade, String cpf, String telefone) {
+        Paciente paciente = new Paciente(nome, idade, cpf, telefone);
+        pacientes.add(paciente);
+        System.out.println("Paciente cadastrado com sucesso!");
+    }
+
+    // Método para listar médicos
+    public void listarMedicos() {
+        if (medicos.isEmpty()) {
+            System.out.println("Nenhum médico cadastrado.");
+        } else {
+            System.out.println("\nLista de Médicos:");
+            for (Medico medico : medicos) {
+                System.out.println(medico);
+            }
+        }
+    }
+
+    // Método para listar pacientes
+    public void listarPacientes() {
+        if (pacientes.isEmpty()) {
+            System.out.println("Nenhum paciente cadastrado.");
+        } else {
+            System.out.println("\nLista de Pacientes:");
+            for (Paciente paciente : pacientes) {
+                System.out.println(paciente);
+            }
+        }
+    }
+
+    // Método principal (main) para interação com o usuário
+    public static void main(String[] args) {
+        Main sistema = new Main();
+        Scanner scanner = new Scanner(System.in);
+        int opcao;
+
+        do {
+            System.out.println("\nMenu:");
+            System.out.println("1. Cadastrar Médico");
+            System.out.println("2. Cadastrar Paciente");
+            System.out.println("3. Listar Médicos");
+            System.out.println("4. Listar Pacientes");
+            System.out.println("0. Sair");
+            System.out.print("Escolha uma opção: ");
+            opcao = scanner.nextInt();
+            scanner.nextLine(); // Limpa o buffer de entrada
+
+            switch (opcao) {
+                case 1:
+                    // Cadastro de médico
+                    System.out.print("Digite o nome do médico: ");
+                    String nomeMedico = scanner.nextLine();
+                    System.out.print("Digite a especialidade do médico: ");
+                    String especialidade = scanner.nextLine();
+                    System.out.print("Digite o CRM do médico: ");
+                    String crm = scanner.nextLine();
+                    System.out.print("Digite o telefone do médico: ");
+                    String telefoneMedico = scanner.nextLine();
+                    sistema.adicionarMedico(nomeMedico, especialidade, crm, telefoneMedico);
+                    break;
+
+                case 2:
+                    // Cadastro de paciente
+                    System.out.print("Digite o nome do paciente: ");
+                    String nomePaciente = scanner.nextLine();
+                    System.out.print("Digite a idade do paciente: ");
+                    int idade = scanner.nextInt();
+                    scanner.nextLine(); // Limpa o buffer
+                    System.out.print("Digite o CPF do paciente: ");
+                    String cpf = scanner.nextLine();
+                    System.out.print("Digite o telefone do paciente: ");
+                    String telefonePaciente = scanner.nextLine();
+                    sistema.adicionarPaciente(nomePaciente, idade, cpf, telefonePaciente);
+                    break;
+
+                case 3:
+                    // Listar médicos
+                    sistema.listarMedicos();
+                    break;
+
+                case 4:
+                    // Listar pacientes
+                    sistema.listarPacientes();
+                    break;
+
+                case 0:
+                    // Sair do sistema
+                    System.out.println("Saindo...");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+                    break;
+            }
+        } while (opcao != 0);
+
+        scanner.close(); // Fecha o scanner ao final do programa
+    }
+}
