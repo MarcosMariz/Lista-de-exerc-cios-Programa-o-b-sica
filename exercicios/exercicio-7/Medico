@@ -1,0 +1,37 @@
+public class Medico {
+    private String nome;
+    private String especialidade;
+    private String crm;
+    private String telefone;
+
+    // Construtor
+    public Medico(String nome, String especialidade, String crm, String telefone) {
+        this.nome = nome;
+        this.especialidade = especialidade;
+        this.crm = crm;
+        this.telefone = telefone;
+    }
+
+    //getters
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEspecialidade() {
+        return especialidade;
+    }
+
+    public String getCrm() {
+        return crm;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    //retornar as informações
+    @Override
+    public String toString() {
+        return "Nome: " + nome + ", Especialidade: " + especialidade + ", CRM: " + crm + ", Telefone: " + telefone;
+    }
+}
